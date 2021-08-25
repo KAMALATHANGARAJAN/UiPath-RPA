@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="848,1547" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1340,2395" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="32">
       <x:String>System.Activities</x:String>
@@ -69,7 +69,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="691,1482" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap:VirtualizedContainerService.HintSize="811,2330" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="sd:DataTable" Name="resdt" />
       <Variable x:TypeArguments="x:String" Name="strdata" />
@@ -77,15 +77,17 @@
       <Variable x:TypeArguments="x:Int32" Name="ArrearCount" />
       <Variable x:TypeArguments="x:Int32" Name="AbsentCount" />
       <Variable x:TypeArguments="sd:DataTable" Name="outdt" />
+      <Variable x:TypeArguments="x:Double" Name="PassPercent" />
+      <Variable x:TypeArguments="x:Int32" Name="SubjectCount" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="649,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+    <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="769,222" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
-        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+        <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
           <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
             <ui:AssignOperation.To>
               <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
@@ -110,118 +112,188 @@
               <InArgument x:TypeArguments="x:Int32">0</InArgument>
             </ui:AssignOperation.Value>
           </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_7">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Double">[PassPercent]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Double">0</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
+          <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_8">
+            <ui:AssignOperation.To>
+              <OutArgument x:TypeArguments="x:Int32">[SubjectCount]</OutArgument>
+            </ui:AssignOperation.To>
+            <ui:AssignOperation.Value>
+              <InArgument x:TypeArguments="x:Int32">1</InArgument>
+            </ui:AssignOperation.Value>
+          </ui:AssignOperation>
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <ui:BuildDataTable DataTable="[outdt]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="649,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Pass_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Arrear_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Absent_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="649,1091" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\Administrator\Desktop\RPA\Result Sheet sem.xlsx">
+    <ui:BuildDataTable DataTable="[outdt]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="769,59" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Subject&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Pass_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Arrear_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Absent_x0020_Count&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Pass_x0020_Percentage&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="769,1877" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Users\Administrator\Desktop\RPA\Result Sheet sem.xlsx">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="615,982" sap2010:WorkflowViewState.IdRef="Sequence_1">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="735,1768" sap2010:WorkflowViewState.IdRef="Sequence_1">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:Int32" Name="i" />
+              <Variable x:TypeArguments="sd:DataTable" Name="no_of_rows_dt" />
+              <Variable x:TypeArguments="x:Int32" Name="total_rows" />
+              <Variable x:TypeArguments="x:String" Name="str" />
+            </Sequence.Variables>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelReadRange AddHeaders="False" DataTable="[resdt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="573,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="E1:E5" SheetName="Sheet1" />
-            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[resdt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="573,602" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
-              <ui:ForEachRow.Body>
-                <ActivityAction x:TypeArguments="sd:DataRow">
-                  <ActivityAction.Argument>
-                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="item" />
-                  </ActivityAction.Argument>
-                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="539,483" sap2010:WorkflowViewState.IdRef="Sequence_3">
-                    <Sequence.Variables>
-                      <Variable x:TypeArguments="x:String" Name="grade" />
-                    </Sequence.Variables>
+            <ui:ExcelReadRange AddHeaders="False" DataTable="[resdt]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="693,59" sap2010:WorkflowViewState.IdRef="ExcelReadRange_1" Range="E1:M59" SheetName="Sheet3" />
+            <Assign sap:VirtualizedContainerService.HintSize="693,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:Int32">0</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:InterruptibleWhile Condition="[i&lt;=8]" DisplayName="While" sap:VirtualizedContainerService.HintSize="693,1350" sap2010:WorkflowViewState.IdRef="InterruptibleWhile_1">
+              <ui:InterruptibleWhile.Body>
+                <Sequence sap:VirtualizedContainerService.HintSize="657,1185" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="615,562" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
-                      <Assign.To>
-                        <OutArgument x:TypeArguments="x:String">[grade]</OutArgument>
-                      </Assign.To>
-                      <Assign.Value>
-                        <InArgument x:TypeArguments="x:String">[item(0).ToString]</InArgument>
-                      </Assign.Value>
-                    </Assign>
-                    <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[grade]" sap:VirtualizedContainerService.HintSize="497,291" sap2010:WorkflowViewState.IdRef="Switch`1_2">
-                      <Assign x:Key="U" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[ArrearCount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[ArrearCount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="A" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_9">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="B" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_10">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="C" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_11">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="O" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_12">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="A+" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_17">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="B+" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_13">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                      <Assign x:Key="UA" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
-                        <Assign.To>
-                          <OutArgument x:TypeArguments="x:Int32">[AbsentCount]</OutArgument>
-                        </Assign.To>
-                        <Assign.Value>
-                          <InArgument x:TypeArguments="x:Int32">[AbsentCount+1]</InArgument>
-                        </Assign.Value>
-                      </Assign>
-                    </Switch>
+                    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[resdt]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="573,470" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                      <ui:ForEachRow.Body>
+                        <ActivityAction x:TypeArguments="sd:DataRow">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="539,351" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="grade" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <Assign sap:VirtualizedContainerService.HintSize="497,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="x:String">[grade]</OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="x:String">[row.Item(i).ToString]</InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <Switch x:TypeArguments="x:String" DisplayName="Switch" Expression="[grade]" sap:VirtualizedContainerService.HintSize="497,159" sap2010:WorkflowViewState.IdRef="Switch`1_2">
+                              <Switch.Default>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">[passcount+1]</InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Switch.Default>
+                              <Assign x:Key="U" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[ArrearCount]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[ArrearCount+1]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <Assign x:Key="UA" sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">[AbsentCount]</OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">[AbsentCount+1]</InArgument>
+                                </Assign.Value>
+                              </Assign>
+                            </Switch>
+                          </Sequence>
+                        </ActivityAction>
+                      </ui:ForEachRow.Body>
+                    </ui:ForEachRow>
                   </Sequence>
-                </ActivityAction>
-              </ui:ForEachRow.Body>
-            </ui:ForEachRow>
-            <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{passcount, ArrearCount, AbsentCount}]" DataTable="[outdt]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="573,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
-            <ui:ExcelWriteRange AddHeaders="True" DataTable="[outdt]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="573,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet2" StartingCell="A1" />
+                  <Assign sap:VirtualizedContainerService.HintSize="615,60" sap2010:WorkflowViewState.IdRef="Assign_23">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:Double">[PassPercent]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:Double">[passcount/( passcount + ArrearCount) * 100]</InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <ui:AddDataRow DataRow="{x:Null}" ArrayRow="[{SubjectCount, passcount, ArrearCount, AbsentCount, PassPercent}]" DataTable="[outdt]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="615,22" sap2010:WorkflowViewState.IdRef="AddDataRow_1" />
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="615,129" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_9">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[i]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32" xml:space="preserve">[i  + 1]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_10">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[SubjectCount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">[SubjectCount + 1]</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                  </ui:MultipleAssign>
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="615,160" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
+                    <ui:MultipleAssign.AssignOperations>
+                      <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_4">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[passcount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_5">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[ArrearCount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                        <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_6">
+                          <ui:AssignOperation.To>
+                            <OutArgument x:TypeArguments="x:Int32">[AbsentCount]</OutArgument>
+                          </ui:AssignOperation.To>
+                          <ui:AssignOperation.Value>
+                            <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                          </ui:AssignOperation.Value>
+                        </ui:AssignOperation>
+                      </scg:List>
+                    </ui:MultipleAssign.AssignOperations>
+                  </ui:MultipleAssign>
+                </Sequence>
+              </ui:InterruptibleWhile.Body>
+            </ui:InterruptibleWhile>
+            <ui:ExcelWriteRange AddHeaders="True" DataTable="[outdt]" DisplayName="Write Range" sap:VirtualizedContainerService.HintSize="693,87" sap2010:WorkflowViewState.IdRef="ExcelWriteRange_1" SheetName="Sheet2" StartingCell="A1" />
           </Sequence>
         </ActivityAction>
       </ui:ExcelApplicationScope.Body>
